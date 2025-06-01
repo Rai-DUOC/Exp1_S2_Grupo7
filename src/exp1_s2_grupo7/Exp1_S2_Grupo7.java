@@ -13,13 +13,13 @@ public class Exp1_S2_Grupo7 {
         Scanner dato = new Scanner(System.in);
 
         while (op != 6) {
-            System.out.println("\nBienvenido al Sistema de Gestion de Cuentas");
-            System.out.println("\n--- Menu Bank Boston ---");
+            System.out.println("\nBienvenido al Sistema de Gestion de Cuentas Bank Boston");
+            System.out.println("\n--- Menu Principal ---");
             System.out.println("1. Registrar cliente y aperturar cuenta.");
             System.out.println("2. Ver datos del cliente y cuenta.");
             System.out.println("3. Depositar dinero a cuenta.");
-            System.out.println("4. Girar dinero desde cuenta.");
-            System.out.println("5. Consultar saldo de cuenta.");
+            System.out.println("4. Girar o retirar dinero desde cuenta.");
+            System.out.println("5. Consultar saldo e informacion de cuenta.");
             System.out.println("6. Salir.");
             try {
                 System.out.println("\nIngrese la opcion deseada:");
@@ -51,7 +51,7 @@ public class Exp1_S2_Grupo7 {
                         } catch (InputMismatchException e) {
                             dato.nextLine(); //Consumir entrada consola.
                             System.out.println("-----------------------------------------------------------");
-                            System.out.println("Entrada inválida. Por favor, ingrese el RUT en formato '12.345.678-9'");
+                            System.out.println("Entrada invalida. Por favor, ingrese el RUT en formato '12.345.678-9'");
                             System.out.println("-----------------------------------------------------------");
                         }
                         if (!rutValido) {
@@ -127,7 +127,7 @@ public class Exp1_S2_Grupo7 {
                     String numCuentaIngresado = "";
                     boolean cuentaNumeroValido = false;
                     while (!cuentaNumeroValido) {
-                        System.out.println("Ingrese numero para la nueva cuenta (ej. 9 digitos):");
+                        System.out.println("Ingrese numero para la nueva cuenta (9 digitos):");
                         numCuentaIngresado = dato.nextLine();
                         if (cuentaNumValidacion(numCuentaIngresado)) {
                             cuentaNumeroValido = true;
@@ -189,7 +189,7 @@ public class Exp1_S2_Grupo7 {
                                 montoDepositoValido = true;
                             } else {
                                 System.out.println("-----------------------------------------------------------");
-                                System.out.println("Error: El monto a depositar debe ser mayo a $0.");
+                                System.out.println("Error: El monto a depositar debe ser mayor a $0.");
                                 System.out.println("-----------------------------------------------------------");
                             }
                         } catch (InputMismatchException e) {
@@ -219,7 +219,7 @@ public class Exp1_S2_Grupo7 {
                                 montoGiroValido = true;
                             } else {
                                 System.out.println("-----------------------------------------------------------");
-                                System.out.println("Error: El monto a girar debe ser mayo a $0.");
+                                System.out.println("Error: El monto a girar debe ser mayor a $0.");
                                 System.out.println("-----------------------------------------------------------");
                             }
                         } catch (InputMismatchException e) {
@@ -257,7 +257,7 @@ public class Exp1_S2_Grupo7 {
             return true;
         } else {
             System.out.println("-----------------------------------------------------------");
-            System.out.println("Error, el numero de cuenta debe tener 9 carateres");
+            System.out.println("Error, el numero de cuenta debe tener 9 digitos");
             System.out.println("-----------------------------------------------------------");
             return false;
         }
