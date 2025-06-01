@@ -9,7 +9,6 @@ public class Exp1_S2_Grupo7 {
 
         Cliente cliente = new Cliente();
         int op = 0;
-        //int cuentaVal = 0;
         Scanner dato = new Scanner(System.in);
 
         while (op != 6) {
@@ -100,7 +99,7 @@ public class Exp1_S2_Grupo7 {
                     }
                     cliente.setTelefono(telefono);
 
-                    // --- Selección del Tipo de Cuenta ---
+                    // Logica para seleccionar el tipo de cuenta
                     int tipoCuentaOpcion = 0;
                     boolean tipoCuentaValido = false;
                     System.out.println("\n--- Creacion de Cuenta ---");
@@ -135,7 +134,7 @@ public class Exp1_S2_Grupo7 {
                     }
 
                     String titularCuenta = cliente.getNombre() + " " + cliente.getApellidoP();
-                    CuentaBancaria nuevaCuenta = null; // Referencia polimórfica¿?
+                    CuentaBancaria nuevaCuenta = null; // Crear cuenta 'vacia' para luego asignarle el tipo despues de elegir el tipo.
 
                     switch (tipoCuentaOpcion) {
                         case 1: // Cuenta Corriente                                                                                
@@ -151,7 +150,7 @@ public class Exp1_S2_Grupo7 {
                             System.out.println("Cuenta de Credito creada exitosamente.");
                             break;
                     }
-                    if (nuevaCuenta != null) {
+                    if (nuevaCuenta != null) { //Valida la creacion de la cuenta.
                         cliente.setCuenta(nuevaCuenta);
                         System.out.println("\n-----------------------------------------------------------");
                         System.out.println("Cliente y nueva cuenta registrados exitosamente.");
@@ -162,7 +161,7 @@ public class Exp1_S2_Grupo7 {
                     }
                     break;
                 case 2: //Ver datos.
-                    if (cliente.getRut() == null) {
+                    if (cliente.getRut() == null) { //Mensaje en caso de que no existan clientes registrados.
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("No se registra ningun cliente ingresado al sistema.");
                         System.out.println("-----------------------------------------------------------");
@@ -171,7 +170,7 @@ public class Exp1_S2_Grupo7 {
                     }
                     break;
                 case 3: //Depositar.
-                    if (cliente.getCuenta() == null) {
+                    if (cliente.getCuenta() == null) { //Mensaje en caso de que no existan cuentas creadas.
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("No se registra ningun cliente ingresado al sistema.");
                         System.out.println("-----------------------------------------------------------");
@@ -185,7 +184,7 @@ public class Exp1_S2_Grupo7 {
                             montoDeposito = dato.nextDouble();
                             dato.nextLine(); //Consumir entrada consola.
                             if (montoDeposito > 0) {
-                                cliente.getCuenta().depositar(montoDeposito);
+                                cliente.getCuenta().depositar(montoDeposito); //Metodo para depositar monto.
                                 montoDepositoValido = true;
                             } else {
                                 System.out.println("-----------------------------------------------------------");
@@ -201,7 +200,7 @@ public class Exp1_S2_Grupo7 {
                     }
                     break;
                 case 4: //Girar.
-                    if (cliente.getCuenta() == null) {
+                    if (cliente.getCuenta() == null) { ////Mensaje en caso de que no existan cuentas creadas.
                         System.out.println("-----------------------------------------------------------");
                         System.out.println("No se registra ningun cliente ingresado al sistema.");
                         System.out.println("-----------------------------------------------------------");
@@ -215,7 +214,7 @@ public class Exp1_S2_Grupo7 {
                             montoGirar = dato.nextDouble();
                             dato.nextLine(); //Consumir entrada consola.
                             if (montoGirar > 0) {
-                                cliente.getCuenta().retirar(montoGirar); //Metodo Retirar de la clase CuentaCorriente.
+                                cliente.getCuenta().retirar(montoGirar); //Metodo para girar/retirar monto.
                                 montoGiroValido = true;
                             } else {
                                 System.out.println("-----------------------------------------------------------");
@@ -253,7 +252,7 @@ public class Exp1_S2_Grupo7 {
     }
 
     public static boolean cuentaNumValidacion(String cuentaNum) {
-        if (cuentaNum != null && cuentaNum.length() == 9) {
+        if (cuentaNum != null && cuentaNum.length() == 9) { //Para validar que el num de cuenta sea de 9 digitos.
             return true;
         } else {
             System.out.println("-----------------------------------------------------------");
